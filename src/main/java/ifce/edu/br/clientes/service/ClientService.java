@@ -4,6 +4,7 @@ import ifce.edu.br.clientes.model.Client;
 import ifce.edu.br.clientes.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +14,7 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Client create(Client client) {
+    public Client create(@RequestBody Client client) {
         if (clientRepository.existsByCpf(client.getCpf())) {
             throw new IllegalArgumentException("Cliente com este CPF já existe");
         }

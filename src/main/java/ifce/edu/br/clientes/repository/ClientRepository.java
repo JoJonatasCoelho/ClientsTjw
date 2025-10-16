@@ -59,7 +59,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query("SELECT c FROM Client c ORDER BY c.name ASC")
     List<Client> findAllOrderedByName();
 
-    @Query("SELECT c FROM Client c WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%')) LIMIT :limit")
+    @Query("SELECT c FROM Client c WHERE LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%'))")
     List<Client> filterByNameWithLimit(@Param("name") String name, @Param("limit") int limit);
 
 
